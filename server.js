@@ -1,8 +1,5 @@
-// Dependencies
 var path = require('path');
 var bodyParser = require('body-parser');
-
-// Initialize Express app
 var express = require('express');
 var app = express();
 
@@ -11,12 +8,6 @@ var exphbs = require('express-handlebars');
 // Create `ExpressHandlebars` instance with a default layout.
 var hbs = exphbs.create({
   defaultLayout: 'main',
-  // Specify helpers which are only registered on this instance.
-  helpers: {
-    addOne: function(value, options){
-      return parseInt(value) + 1;
-    }
-  }
 });
 // Set up view engine
 app.engine('handlebars', hbs.engine);
@@ -45,23 +36,16 @@ var ScrapedData = require('./scrapedDataModel');
 // Scrape data when app starts
 var options = {
   url: 'http://www.yogajournal.com/category/lifestyle/',
-  // headers: {
-  //   'User-Agent': 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13'
-  // }
+ 
 };
-// Make a request for the news section of bodybuilding.com
+// Make a request for the news section of yogajournal.com
 request(options, function(error, response, html) {
   // Load the html body from request into cheerio
   var $ = cheerio.load(html);
   // For each element with a "new-content-block" class
   $('div.new-content-block').each(function(i, element) {
-    // Save the div and a tag
-    var $a = $(this).children('a');
-    var $div = $(this).children('div');
     // Save the article url
     var articleURL = $a.attr('href');
-    // Save the img url of each element
-    //var imgURL = $a.children('img').attr('src');
     // Save the title text
     var title = $div.children('h4').text();
     // Save the synopsis text
@@ -171,7 +155,7 @@ app.post('/remove/:id', function(req, res) {
   );
 });
 
-// Listen on port 1234
+// Listen on port 3000
 app.listen(3000, function() {
   console.log('App running on port 3000!');
 });
