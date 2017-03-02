@@ -2,7 +2,7 @@
 var mongoose = require('mongoose'),
 	Schema = mongoose.Schema;
 
-// new Schema
+// to create new schema
 var ScrapedDataSchema = Schema({
 	title: {
 		type: String,

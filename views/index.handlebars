@@ -4,7 +4,7 @@
     <img src="http://youqueen.com/wp-content/uploads/2013/09/Yoga-Purple-Background.jpg">
   </div>
 </a>
-<div id="lifter">
+<div id="yogaNews">
   <div id="buttons">
     <button id="next" data-id="{{ this._id }}">Next</button>
   </div>
@@ -15,15 +15,15 @@
     <p>{{ this.synopsis }}</p>
   </div>
 </a>
-<div id="section2">
-  <div class="comments">
+
+  <div class="comment">
     <h3>Post a Comment:</h3>
     <input id="comment" type="text" name="comment" placeholder="Type your comment here...">
     <button id="post" data-id="{{ this._id }}">Post</button>
   </div>
-</div>
-<div id="section3">
-  <div class="comments">
+
+
+  <div class="commented">
     <h3>Previously Left Comments:</h3>
     <div id="comment-holder">
       {{#each this.comments as |value key|}}
